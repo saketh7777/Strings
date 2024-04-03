@@ -1,0 +1,39 @@
+class Solution {
+    public String longestPalindrome(String s) {
+       String longs = "";
+       if(s.length()==1){
+        return s;
+       }
+       //String s  = sc.next();
+       for (int i = 1; i <s.length(); i++) {
+        int low = i;
+        int high = i;
+        while (s.charAt(low) ==s.charAt(high)) {
+            low--;
+            high++;
+            if(low==-1 || high==s.length()){
+                break;
+            }
+        }
+        String palindromese = s.substring(low+1 , high);
+        if (palindromese.length() >longs.length()) {
+            longs = palindromese;
+        }
+        //evenlength
+        low = i-1;
+        high=i;
+        while (s.charAt(low) ==s.charAt(high)) {
+            low--;
+            high++;
+            if(low==-1 || high==s.length()){
+                break;
+            }
+        }
+         palindromese = s.substring(low+1 , high);
+        if (palindromese.length() >longs.length()) {
+            longs = palindromese;
+        }
+       }
+       return longs;
+    }
+}
